@@ -1,6 +1,12 @@
-# Cookiecutter-phoenix
+# Cookiecutter-phoenix (WIP)
 
 A [cookiecutter](https://github.com/audreyr/cookiecutter) template to bootstrap an Elixir/Phoenix web app.
+
+## Prerequisities
+
+- Python 3.6
+- Elixir 1.6
+- Postgresql >= 9.6
 
 ## Features
 
