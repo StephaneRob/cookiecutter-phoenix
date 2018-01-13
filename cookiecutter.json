@@ -1,0 +1,15 @@
+{
+  "app_name": "myapp",
+  "app_name_camel_case": "{{ cookiecutter.app_name.split('_')|map('title')|join }}",
+  "domain_name": "example.com",
+  "author_name": "Stéphane ROBINO",
+  "email": "you@example.com",
+  "description": "A short description of the project.",
+  "version": "0.0.1",
+  "dev_database_name": "{{cookiecutter.app_name}}_dev",
+  "dev_database_username": "",
+  "dev_database_password": "",
+  "test_database_name": "{{cookiecutter.app_name}}_test",
+  "test_database_username": "",
+  "test_database_password": ""
+}

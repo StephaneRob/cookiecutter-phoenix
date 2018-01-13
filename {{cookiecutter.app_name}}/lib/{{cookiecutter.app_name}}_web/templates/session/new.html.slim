@@ -1,0 +1,16 @@
+.container
+  h2 Login
+
+  = form_for @conn, session_path(@conn, :create), [as: :session], fn f ->
+    .form-group
+      label Email/username
+      = text_input f, :login, class: "form-control #{error_class(f, :password)}"
+    .form-group
+      label Password
+      = password_input f, :password, class: "form-control #{error_class(f, :password)}"
+    .form-group
+      = submit "Login", class: "btn btn-primary"
+
+  p.text-center.text-muted
+    ' Forgot password?
+    = link(gettext("Recover"), to: password_path(@conn, :new))

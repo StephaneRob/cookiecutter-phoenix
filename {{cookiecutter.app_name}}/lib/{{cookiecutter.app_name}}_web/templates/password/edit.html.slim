@@ -1,0 +1,18 @@
+.container
+
+  h2 Reset your password
+
+  = form_for @changeset, password_path(@conn, :update, @id), fn f ->
+    = hidden_input f, :reset_password_token
+    .form-group
+      label Nouveau mot de passe
+      = password_input f, :password, class: "form-control #{error_class(f, :password)}"
+      = error_tag f, :password
+
+    .form-group
+      label Nouveau mot de passe (confirmation)
+      = password_input f, :password_confirmation, class: "form-control #{error_class(f, :password_confirmation)}"
+      = error_tag f, :password_confirmation
+
+    .form-group
+      = submit gettext("Change password"), class: "btn btn-primary"
