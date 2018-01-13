@@ -1,6 +1,6 @@
 # Cookiecutter-phoenix (WIP)
 
-A [cookiecutter](https://github.com/audreyr/cookiecutter) template to bootstrap an Elixir/Phoenix web app.
+A [cookiecutter](https://github.com/audreyr/cookiecutter) template to bootstrap an [Elixir](https://elixir-lang.org/)/[Phoenix](http://phoenixframework.org/) web app.
 
 ## Prerequisities
 
