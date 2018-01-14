@@ -17,7 +17,6 @@ defmodule {{cookiecutter.app_name_camel_case}}.Guardian do
   end
 
   def resource_from_claims(claims) do
-    IO.inspect claims
     # Here we'll look up our resource from the claims, the subject can be
     # found in the `"sub"` key. In `above subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.

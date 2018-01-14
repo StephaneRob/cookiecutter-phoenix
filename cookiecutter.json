@@ -6,6 +6,7 @@
   "email": "you@example.com",
   "description": "A short description of the project.",
   "version": "0.0.1",
+  "dev_port": 4000,
   "dev_database_name": "{{cookiecutter.app_name}}_dev",
   "dev_database_username": "",
   "dev_database_password": "",
