@@ -15,7 +15,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
           {:ok, true} ->
             conn
             |> Accounts.sign_in(user)
-            |> put_flash(:info, gettext("Successfully logged in."))
+            |> put_flash(:info, gettext("Signed in successfully."))
             |> redirect(to: home_path(conn, :index))
           {reason, false} ->
             conn
@@ -31,9 +31,9 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
           user.failed_attempts < Application.get_env(:my_app, :locked_after, 4) ->
             gettext("Email or password invalid.")
           user.failed_attempts == Application.get_env(:my_app, :locked_after, 4) ->
-            gettext("Il ne vous reste qu'une seule tentative avant le blocage de votre compte.")
+            gettext("You have one more attempt before your account is locked.")
           user.failed_attempts > Application.get_env(:my_app, :locked_after, 4) ->
-            gettext("Votre compte est bloqué.")
+            gettext("Your account is locked.")
         end
 
         conn
@@ -45,7 +45,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
   def delete(conn, _) do
     conn
     |> {{cookiecutter.app_name_camel_case}}.Guardian.Plug.sign_out
-    |> put_flash(:info, "See you soon !")
+    |> put_flash(:info, "Signed out successfully.")
     |> redirect(to: "/")
   end
 end
