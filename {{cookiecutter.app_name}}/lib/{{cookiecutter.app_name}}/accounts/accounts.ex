@@ -94,15 +94,15 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
 
   # Lockable
   def lock(%User{} = user) do
-    tracks = %{
-      failed_attempts: user.failed_attempts + 1
-    }
+    tracks = %{failed_attempts: user.failed_attempts + 1}
 
-    if tracks[:failed_attempts] > Application.get_env(:{{cookiecutter.app_name}}, :locked_after, 4) do
-      tracks = tracks
-      |> Map.put(:unlock_token, User.generate_token(:unlock_token, 24))
-      |> Map.put(:locked_at, DateTime.utc_now)
-      # TODO - Add mailer to send unlock instruction
+    tracks = cond do
+      tracks[:failed_attempts] > Application.get_env(:my_app, :locked_after, 4) ->
+         tracks
+         |> Map.put(:unlock_token, User.generate_token(:unlock_token, 24))
+         |> Map.put(:locked_at, DateTime.utc_now)
+      true ->
+        tracks
     end
 
     user

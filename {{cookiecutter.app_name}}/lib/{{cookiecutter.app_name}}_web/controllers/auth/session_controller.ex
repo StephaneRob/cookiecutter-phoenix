@@ -27,13 +27,13 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
         |> put_flash(:error, gettext("Email or password invalid."))
         |> render("new.html")
       {:error, user} ->
-        cond do
-          user.failed_attempts < Application.get_env(:{{cookiecutter.app_name}}, :locked_after, 4) ->
-            flash = gettext("Email or password invalid.")
-          user.failed_attempts == Application.get_env(:{{cookiecutter.app_name}}, :locked_after, 4) ->
-            flash = gettext("Il ne vous reste qu'une seule tentative avant le blocage de votre compte.")
-          user.failed_attempts > Application.get_env(:{{cookiecutter.app_name}}, :locked_after, 4) ->
-            flash = gettext("Votre compte est bloqué.")
+        flash = cond do
+          user.failed_attempts < Application.get_env(:my_app, :locked_after, 4) ->
+            gettext("Email or password invalid.")
+          user.failed_attempts == Application.get_env(:my_app, :locked_after, 4) ->
+            gettext("Il ne vous reste qu'une seule tentative avant le blocage de votre compte.")
+          user.failed_attempts > Application.get_env(:my_app, :locked_after, 4) ->
+            gettext("Votre compte est bloqué.")
         end
 
         conn

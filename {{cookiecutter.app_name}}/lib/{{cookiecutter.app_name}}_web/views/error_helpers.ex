@@ -15,7 +15,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ErrorHelpers do
   end
 
   def error_class(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn (error) ->
+    Enum.map(Keyword.get_values(form.errors, field), fn (_error) ->
       "is-invalid"
     end)
   end

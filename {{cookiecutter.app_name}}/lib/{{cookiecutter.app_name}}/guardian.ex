@@ -3,7 +3,6 @@ defmodule {{cookiecutter.app_name_camel_case}}.Guardian do
   alias {{cookiecutter.app_name_camel_case}}.Accounts
 
   def subject_for_token(resource, claims) do
-    IO.inspect claims
     # You can use any value for the subject of your token but
     # it should be useful in retrieving the resource later, see
     # how it being used on `resource_from_claims/1` function.
