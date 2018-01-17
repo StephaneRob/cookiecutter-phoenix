@@ -38,7 +38,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
-
+      import Scrivener.HTML
       import {{cookiecutter.app_name_camel_case}}Web.Router.Helpers
       import {{cookiecutter.app_name_camel_case}}Web.ErrorHelpers
       import {{cookiecutter.app_name_camel_case}}Web.AppHelpers

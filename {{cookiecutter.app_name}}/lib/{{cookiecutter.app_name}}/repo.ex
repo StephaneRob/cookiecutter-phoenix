@@ -1,6 +1,6 @@
 defmodule {{cookiecutter.app_name_camel_case}}.Repo do
   use Ecto.Repo, otp_app: :{{cookiecutter.app_name}}
-
+  use Scrivener, page_size: 30
   @doc """
   Dynamically loads the repository url from the
   DATABASE_URL environment variable.

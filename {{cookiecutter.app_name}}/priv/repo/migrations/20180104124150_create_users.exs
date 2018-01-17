@@ -33,6 +33,9 @@ defmodule {{cookiecutter.app_name_camel_case}}.Repo.Migrations.CreateUsers do
       add :unlock_token, :string
       add :locked_at, :utc_datetime
 
+      ## admin
+      add :admin, :boolean, default: false
+
       timestamps()
     end
 

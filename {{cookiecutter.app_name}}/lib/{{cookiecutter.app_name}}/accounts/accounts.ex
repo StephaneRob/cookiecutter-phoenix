@@ -13,6 +13,19 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   # ----------------------------------
   def list_users, do: Repo.all(User)
 
+  def paginated_users(params) do
+    query = if params["search"] do
+      from u in User,
+        where: ilike(u.email, ^"%#{params["search"]}%") or ilike(u.name, ^"%#{params["search"]}%"),
+        order_by: [desc: :inserted_at]
+    else
+      from u in User,
+        order_by: [desc: :inserted_at]
+    end
+    query |> Repo.paginate(params)
+  end
+
+
   def get_user!(id), do: Repo.get!(User, id)
 
   def get_user_by(attr, value), do: Repo.get_by(User, Map.new([{attr, value}]))

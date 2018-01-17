@@ -10,7 +10,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.ActiveForAuthentication d
 
   @doc false
   def call(conn, _) do
-    user = {{cookiecutter.app_name_camel_case}}.Guardian.Plug.current_resource(conn)
+    user = conn.assigns[:current_user]
     case Accounts.active_for_authentication?(user) do
       {:ok, true} -> conn
       {reason, false} ->

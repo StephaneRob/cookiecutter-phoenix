@@ -1,0 +1,20 @@
+.container
+  h1 Users
+  table.table
+    thead
+      tr
+        th Id
+        th Created at
+        th Name
+        th Confirmed
+        th Suspended
+        th Locked
+    tbody
+      = for user <- @users do
+        tr
+          td= user.id
+          td= user.inserted_at
+          td= user.name
+          td= !!user.confirmed_at
+          td= !!user.suspended_at
+          td= !!user.locked_at

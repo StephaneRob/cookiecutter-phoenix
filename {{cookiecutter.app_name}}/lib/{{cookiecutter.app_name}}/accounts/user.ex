@@ -37,6 +37,9 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
     field :unlock_token, :string # Only if unlock strategy is :email or :both
     field :locked_at, :utc_datetime
 
+    ## Admin
+    field :admin, :boolean
+
     timestamps()
   end
 

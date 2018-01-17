@@ -35,8 +35,9 @@ defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
     [
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
-      {:postgrex, ">= 0.0.0"},
+      {:phoenix_ecto, "~> 3.3"},
+      {:ecto, "~> 2.2.8"},
+      {:postgrex, "~> 0.13.3"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_slime, "~> 0.9.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
@@ -44,7 +45,12 @@ defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
       {:cowboy, "~> 1.0"},
       {:guardian, "~> 1.0.1"},
       {:bcrypt_elixir, "~> 1.0.5"},
-      {:comeonin, "~> 4.0.3"}
+      {:comeonin, "~> 4.0.3"},
+      {:scrivener_ecto, "~> 1.3.0"},
+      {:scrivener_html, "~> 1.7.1"},
+      {:distillery, "~> 1.5"},
+      {:bootleg, "~> 0.6"},
+      {:bootleg_phoenix, "~> 0.2"}
     ]
   end
 

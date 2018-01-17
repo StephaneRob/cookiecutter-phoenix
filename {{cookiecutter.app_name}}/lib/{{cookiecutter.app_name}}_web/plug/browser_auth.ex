@@ -7,5 +7,6 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.BrowserAuth do
 
   plug Guardian.Plug.VerifySession, claims: @claims
   plug Guardian.Plug.LoadResource, allow_blank: true
+  plug {{cookiecutter.app_name_camel_case}}Web.Plug.Auth
   plug {{cookiecutter.app_name_camel_case}}Web.Plug.ActiveForAuthentication
 end

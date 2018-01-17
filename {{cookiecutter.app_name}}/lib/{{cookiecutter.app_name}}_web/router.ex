@@ -14,12 +14,22 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Router do
     plug {{cookiecutter.app_name_camel_case}}Web.Plug.BrowserAuth
   end
 
+  pipeline :admin do
+    plug {{cookiecutter.app_name_camel_case}}Web.Plug.RequireAdmin
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", {{cookiecutter.app_name_camel_case}}Web do
     pipe_through [:browser, :browser_auth]
+
+    scope "/admin" , Admin do
+      pipe_through [:admin]
+
+      resources "/user", UserController, only: [:index]
+    end
 
     # Authenticable
     get    "/sign_in",  SessionController, :new
