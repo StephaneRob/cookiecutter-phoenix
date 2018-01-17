@@ -25,7 +25,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Router do
   scope "/", {{cookiecutter.app_name_camel_case}}Web do
     pipe_through [:browser, :browser_auth]
 
-    scope "/admin" , Admin do
+    scope "/admin", Admin, as: :admin do
       pipe_through [:admin]
 
       resources "/user", UserController, only: [:index]

@@ -33,6 +33,10 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}.Guardian
   verify_issuer: true,
   secret_key: "Cmw+/MruMSIOr5B8d7Nlyj+IeS9OdUYWr/J+Eg/NK0RBMKvjhM+UbKgyE1h9lTki"
 
+config :scrivener_html,
+  routes_helper: {{cookiecutter.app_name_camel_case}}.Router.Helpers,
+  view_style: :bootstrap_v4
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

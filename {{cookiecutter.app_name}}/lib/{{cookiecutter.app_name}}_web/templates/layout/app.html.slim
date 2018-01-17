@@ -17,6 +17,9 @@ html lang="en"
           span.navbar-toggler-icon
         .collapse.navbar-collapse#navbarTogglerDemo01
           ul.navbar-nav.ml-auto.mt-2.mt-lg-0
+            = if admin?(@conn) do
+              li.nav-item
+                = link gettext("Users (admin)"), to: admin_user_path(@conn, :index), class: "nav-link"
             = if user_signed_in?(@conn) do
               span.navbar-text= current_user(@conn).email
               li.nav-item
