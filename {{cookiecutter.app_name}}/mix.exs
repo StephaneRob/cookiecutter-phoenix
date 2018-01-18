@@ -5,7 +5,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
     [
       app: :{{cookiecutter.app_name}},
       version: "{{cookiecutter.version}}",
-      elixir: "~> 1.5",
+      elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,

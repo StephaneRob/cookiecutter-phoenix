@@ -1,28 +1,31 @@
 use Bootleg.Config
 
-# Configure the following roles to match your environment.
-# `build` defines what remote server your distillery release should be built on.
-#
-# Some available options are:
-#  - `user`: ssh username to use for SSH authentication to the role's hosts
-#  - `password`: password to be used for SSH authentication
-#  - `identity`: local path to an identity file that will be used for SSH authentication instead of a password
-#  - `workspace`: remote file system path to be used for building and deploying this Elixir project
-
 role :build, "build.example.com", workspace: "/tmp/bootleg/build"
 
-# Phoenix has some extra build steps such as asset digesting that need to be done during
-# compilation. To have bootleeg handle that for you, include the additional package
-# `bootleg_phoenix` to your `deps` list. This will automatically perform the additional steps
-# required for building phoenix releases.
-#
-#  ```
-#  # mix.exs
-#  def deps do
-#    [{:distillery, "~> 1.5"},
-#    {:bootleg, "~> 0.6"},
-#    {:bootleg_phoenix, "~> 0.2"}]
-#  end
-#  ```
-# For more about `bootleg_phoenix` see: https://github.com/labzero/bootleg_phoenix
+after_task :clean do
+  remote :build do
+    "mkdir -p /home/admin/releases/config/"
+    "ln -s /home/admin/shared/prod.secret.exs /home/admin/releases/config/prod.secret.exs"
+  end
+end
 
+task :phoenix_digest do
+  mix_env = Keyword.get(config(), :mix_env, "prod")
+
+  remote :build, cd: "assets" do
+    "npm install"
+    "./node_modules/brunch/bin/brunch b -p"
+  end
+
+  remote :build do
+    "MIX_ENV=#{mix_env} mix phoenix.digest"
+  end
+end
+
+after_task(:compile, :phoenix_digest)
+
+before_task :start do
+  remote :app do
+    "bin/#{Config.app()} migrate"
+  end
+end
