@@ -9,5 +9,4 @@ use Bootleg.Config
 #  - `identity`: local path to an identity file that will be used for SSH authentication instead of a password
 #  - `workspace`: remote file system path to be used for building and deploying this Elixir project
 
-role :app, ["app1.example.com", "app2.example.com"], workspace: "/var/app/example"
-
+role(:app, ["app1.example.com", "app2.example.com"], workspace: "/var/app/example")

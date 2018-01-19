@@ -30,8 +30,9 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/{{cookiecutter.app_name}}_web/templates",
-                        namespace: {{cookiecutter.app_name_camel_case}}Web
+      use Phoenix.View,
+        root: "lib/{{cookiecutter.app_name}}_web/templates",
+        namespace: {{cookiecutter.app_name_camel_case}}Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

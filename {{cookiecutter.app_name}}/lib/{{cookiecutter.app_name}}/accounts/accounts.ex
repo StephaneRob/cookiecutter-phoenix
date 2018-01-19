@@ -14,17 +14,20 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   def list_users, do: Repo.all(User)
 
   def paginated_users(params) do
-    query = if params["search"] do
-      from u in User,
-        where: ilike(u.email, ^"%#{params["search"]}%") or ilike(u.name, ^"%#{params["search"]}%"),
-        order_by: [desc: :inserted_at]
-    else
-      from u in User,
-        order_by: [desc: :inserted_at]
-    end
+    query =
+      if params["search"] do
+        from(
+          u in User,
+          where:
+            ilike(u.email, ^"%#{params["search"]}%") or ilike(u.name, ^"%#{params["search"]}%"),
+          order_by: [desc: :inserted_at]
+        )
+      else
+        from(u in User, order_by: [desc: :inserted_at])
+      end
+
     query |> Repo.paginate(params)
   end
-
 
   def get_user!(id), do: Repo.get!(User, id)
 
@@ -52,7 +55,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
 
   def confirm_user(%User{} = user) do
     user
-    |> Ecto.Changeset.change(%{confirmed_at: DateTime.utc_now, confirmation_token: nil})
+    |> Ecto.Changeset.change(%{confirmed_at: DateTime.utc_now(), confirmation_token: nil})
     |> Repo.update()
   end
 
@@ -60,22 +63,28 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   # Sessions
   # ----------------------------------
   def auth_by_email_and_password(%{"login" => login, "password" => password}) do
-    query = from u in User,
-      where: fragment("lower(email) = lower(?) OR lower(name) = lower(?)", ^login, ^login)
+    query =
+      from(
+        u in User,
+        where: fragment("lower(email) = lower(?) OR lower(name) = lower(?)", ^login, ^login)
+      )
 
-    user = query
+    user =
+      query
       |> first
-      |> Repo.one
+      |> Repo.one()
 
     if user do
       case authenticate(user, password) do
-        true -> {:ok, user}
+        true ->
+          {:ok, user}
+
         false ->
           {_, user} = lock(user)
           {:error, user}
       end
     else
-      IO.puts "JHJKHKJHKJHKJ"
+      IO.puts("JHJKHKJHKJHKJ")
       {:error, nil}
     end
   end
@@ -93,15 +102,17 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   def track(conn, %User{} = user) do
     tracks = %{
       sign_in_count: user.sign_in_count + 1,
-      current_sign_in_at: DateTime.utc_now,
+      current_sign_in_at: DateTime.utc_now(),
       last_sign_in_at: user.current_sign_in_at,
       current_sign_in_ip: Enum.join(Tuple.to_list(conn.remote_ip), "."),
       last_sign_in_ip: user.current_sign_in_ip,
       failed_attempts: 0
     }
+
     user
     |> Ecto.Changeset.change(tracks)
     |> Repo.update()
+
     conn
   end
 
@@ -109,14 +120,16 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   def lock(%User{} = user) do
     tracks = %{failed_attempts: user.failed_attempts + 1}
 
-    tracks = cond do
-      tracks[:failed_attempts] > Application.get_env(:my_app, :locked_after, 4) ->
-         tracks
-         |> Map.put(:unlock_token, User.generate_token(:unlock_token, 24))
-         |> Map.put(:locked_at, DateTime.utc_now)
-      true ->
-        tracks
-    end
+    tracks =
+      cond do
+        tracks[:failed_attempts] > Application.get_env(:my_app, :locked_after, 4) ->
+          tracks
+          |> Map.put(:unlock_token, User.generate_token(:unlock_token, 24))
+          |> Map.put(:locked_at, DateTime.utc_now())
+
+        true ->
+          tracks
+      end
 
     user
     |> Ecto.Changeset.change(tracks)
@@ -125,9 +138,16 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
 
   def active_for_authentication?(nil), do: {:ok, true}
   def active_for_authentication?(%User{confirmed_at: nil}), do: {:unconfirmed, false}
-  def active_for_authentication?(%User{confirmed_at: _, suspended_at: nil, locked_at: nil}), do: {:ok, true}
-  def active_for_authentication?(%User{confirmed_at: _, suspended_at: _, locked_at: nil}), do: {:suspended, false}
-  def active_for_authentication?(%User{confirmed_at: _, suspended_at: _, locked_at: _}), do: {:locked, false}
+
+  def active_for_authentication?(%User{confirmed_at: _, suspended_at: nil, locked_at: nil}),
+    do: {:ok, true}
+
+  def active_for_authentication?(%User{confirmed_at: _, suspended_at: _, locked_at: nil}),
+    do: {:suspended, false}
+
+  def active_for_authentication?(%User{confirmed_at: _, suspended_at: _, locked_at: _}),
+    do: {:locked, false}
+
   def active_for_authentication?(%User{}), do: {:ok, true}
 
   # ----------------------------------
@@ -146,17 +166,16 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   def reset_password(user, attrs \\ %{}) do
     user
     |> User.reset_password_changeset(attrs)
-    |> User.set_password( )
+    |> User.set_password()
     |> Repo.update()
   end
 
   def clean_reset_token(user) do
     user
     |> Ecto.Changeset.change(%{
-        reset_password_sent_at: nil,
-        reset_password_token: nil
-      })
+      reset_password_sent_at: nil,
+      reset_password_token: nil
+    })
     |> Repo.update()
   end
-
 end

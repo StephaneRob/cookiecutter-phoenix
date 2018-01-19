@@ -3,7 +3,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
   alias {{cookiecutter.app_name_camel_case}}.Accounts
   alias {{cookiecutter.app_name_camel_case}}.Accounts.User
 
-  plug :redirect_logged_in
+  plug(:redirect_logged_in)
 
   def new(conn, _params) do
     changeset = Ecto.Changeset.change(%User{}, %{})
@@ -14,13 +14,21 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
     case Accounts.get_user_by(:email, email) do
       nil ->
         changeset = Ecto.Changeset.change(%User{}, %{})
+
         conn
         |> put_flash(:error, gettext("Invalid email"))
         |> render("new.html", changeset: changeset)
+
       user ->
         Accounts.set_reset_password_token(user)
+
         conn
-        |> put_flash(:info, gettext("You will receive an email with instructions on how to reset your password in a few minutes."))
+        |> put_flash(
+          :info,
+          gettext(
+            "You will receive an email with instructions on how to reset your password in a few minutes."
+          )
+        )
         |> redirect(to: home_path(conn, :index))
     end
   end
@@ -31,8 +39,10 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
         conn
         |> put_flash(:error, gettext("Invalid token"))
         |> redirect(to: home_path(conn, :index))
+
       user ->
         changeset = Accounts.new_user_password(user)
+
         conn
         |> render("edit.html", changeset: changeset, id: user.reset_password_token)
     end
@@ -45,15 +55,16 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
       case Accounts.reset_password(user, user_params) do
         {:ok, _} ->
           Accounts.clean_reset_token(user)
+
           conn
           |> put_flash(:info, gettext("Password successfully changed"))
           |> redirect(to: session_path(conn, :new))
+
         {:error, changeset} ->
           conn
           |> render("edit.html", changeset: changeset, id: user.reset_password_token)
       end
     else
-
     end
   end
 end

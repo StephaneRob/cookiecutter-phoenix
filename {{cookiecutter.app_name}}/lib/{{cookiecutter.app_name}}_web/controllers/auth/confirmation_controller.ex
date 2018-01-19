@@ -8,9 +8,11 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ConfirmationController do
         conn
         |> put_flash(:error, gettext("Invalid confirmation token"))
         |> redirect(to: home_path(conn, :index))
+
       user ->
         user
-        |> Accounts.confirm_user
+        |> Accounts.confirm_user()
+
         conn
         |> put_flash(:info, gettext("Your account has been successfully confirmed."))
         |> redirect(to: home_path(conn, :index))

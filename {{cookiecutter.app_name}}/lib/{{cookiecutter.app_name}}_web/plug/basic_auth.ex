@@ -11,7 +11,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.BasicAuth do
     end
   end
 
-  defp verify(conn, attempted_auth, [username: username, password: password]) do
+  defp verify(conn, attempted_auth, username: username, password: password) do
     case encode(username, password) do
       ^attempted_auth -> conn
       _ -> unauthorized(conn)

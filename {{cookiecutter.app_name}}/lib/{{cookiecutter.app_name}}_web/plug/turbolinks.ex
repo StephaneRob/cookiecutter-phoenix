@@ -17,10 +17,10 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.Turbolinks do
     store_location_in_session(conn, location, referrer)
   end
 
-  def handle_redirect(%Plug.Conn{status: s} = conn) when s >= 200 and s < 300  do
+  def handle_redirect(%Plug.Conn{status: s} = conn) when s >= 200 and s < 300 do
     conn
-     |> get_session(@session_key)
-     |> set_location_header(conn)
+    |> get_session(@session_key)
+    |> set_location_header(conn)
   end
 
   def handle_redirect(conn), do: conn
@@ -35,7 +35,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.Turbolinks do
 
   defp set_location_header(location, conn) do
     conn
-      |> put_resp_header(@location_header, location)
-      |> delete_session(@session_key)
+    |> put_resp_header(@location_header, location)
+    |> delete_session(@session_key)
   end
 end

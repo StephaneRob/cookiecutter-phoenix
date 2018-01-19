@@ -1,11 +1,11 @@
 defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.RequireAdmin do
-
   import Plug.Conn, only: [halt: 1]
 
   def init(opts), do: opts
 
   def call(conn, _params) do
     user = conn.assigns[:current_user]
+
     if user && user.admin do
       conn
     else
@@ -14,5 +14,4 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.RequireAdmin do
       |> halt()
     end
   end
-
 end

@@ -9,16 +9,17 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ErrorHelpers do
   Generates tag for inlined form input errors.
   """
   def error_tag(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn (error) ->
-      content_tag :span, translate_error(error), class: "form-control-feedback text-danger small"
+    Enum.map(Keyword.get_values(form.errors, field), fn error ->
+      content_tag(:span, translate_error(error), class: "form-control-feedback text-danger small")
     end)
   end
 
   def error_class(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn (_error) ->
+    Enum.map(Keyword.get_values(form.errors, field), fn _error ->
       "is-invalid"
     end)
   end
+
   @doc """
   Translates an error message using gettext.
   """

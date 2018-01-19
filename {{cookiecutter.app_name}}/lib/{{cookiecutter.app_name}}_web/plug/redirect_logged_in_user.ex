@@ -1,5 +1,4 @@
 defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.RedirectLoggedInUser do
-
   import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
   import Plug.Conn, only: [halt: 1]
   import {{cookiecutter.app_name_camel_case}}Web.Gettext
@@ -18,5 +17,4 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.RedirectLoggedInUser do
       conn
     end
   end
-
 end

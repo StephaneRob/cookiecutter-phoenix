@@ -9,6 +9,7 @@ html lang="en"
     title
       | Hello {{cookiecutter.app_name_camel_case}}!
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
+    script src="#{static_path(@conn, "/js/app.js")}" defer
   body
     nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
       .container
@@ -40,5 +41,3 @@ html lang="en"
           p.m-0= get_flash(@conn, :error)
 
     = render @view_module, @view_template, assigns
-
-    script src="#{static_path(@conn, "/js/app.js")}"

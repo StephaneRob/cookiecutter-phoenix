@@ -15,8 +15,7 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpo
   url: [host: "localhost"],
   secret_key_base: "svqSRdYYcf3Nm8BI3XwQJJvNsydLw4M4trm8T+vqvUzXGtWVy9+usJENd7FMiJ9t",
   render_errors: [view: {{cookiecutter.app_name_camel_case}}Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: {{cookiecutter.app_name_camel_case}}.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: {{cookiecutter.app_name_camel_case}}.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -39,4 +38,4 @@ config :scrivener_html,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

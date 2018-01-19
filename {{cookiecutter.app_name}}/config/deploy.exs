@@ -1,6 +1,6 @@
 use Bootleg.Config
 
-role :build, "build.example.com", workspace: "/tmp/bootleg/build"
+role(:build, "build.example.com", workspace: "/tmp/bootleg/build")
 
 after_task :clean do
   remote :build do

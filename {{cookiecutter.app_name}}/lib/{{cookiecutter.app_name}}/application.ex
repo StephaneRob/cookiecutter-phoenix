@@ -11,7 +11,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Application do
       # Start the Ecto repository
       supervisor({{cookiecutter.app_name_camel_case}}.Repo, []),
       # Start the endpoint when the application starts
-      supervisor({{cookiecutter.app_name_camel_case}}Web.Endpoint, []),
+      supervisor({{cookiecutter.app_name_camel_case}}Web.Endpoint, [])
       # Start your own worker by calling: {{cookiecutter.app_name_camel_case}}.Worker.start_link(arg1, arg2, arg3)
       # worker({{cookiecutter.app_name_camel_case}}.Worker, [arg1, arg2, arg3]),
     ]

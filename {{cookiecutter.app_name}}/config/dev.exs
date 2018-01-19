@@ -11,8 +11,14 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpo
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    node: [
+      "node_modules/brunch/bin/brunch",
+      "watch",
+      "--stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -51,12 +57,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}.Repo,
   adapter: Ecto.Adapters.Postgres,
-  {% if cookiecutter.dev_database_username != "" %}
-  username: "{{cookiecutter.dev_database_username}}",
-  {% endif %}
-  {% if cookiecutter.dev_database_password != "" %}
-  password: "{{cookiecutter.dev_database_password}}",
-  {% endif %}
+  {% if cookiecutter.dev_database_username != "" %}username: "{{cookiecutter.dev_database_username}}",{% endif %}
+  {% if cookiecutter.dev_database_password != "" %}password: "{{cookiecutter.dev_database_password}}",{% endif %}
   database: "{{cookiecutter.dev_database_name}}",
   hostname: "localhost",
   pool_size: 10
