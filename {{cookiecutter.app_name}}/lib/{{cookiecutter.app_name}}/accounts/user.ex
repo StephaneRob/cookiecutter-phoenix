@@ -1,5 +1,7 @@
 defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
   use Ecto.Schema
+  use Timex.Ecto.Timestamps
+
   import Ecto.Changeset
   alias {{cookiecutter.app_name_camel_case}}.{Repo, Accounts}
 
@@ -11,25 +13,25 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
     field(:password, :string, virtual: true)
     field(:password_confirmation, :string, virtual: true)
     field(:encrypted_password, :string)
-    field(:suspended_at, :utc_datetime)
+    field(:suspended_at, Timex.Ecto.DateTime)
 
     field(:confirmation_token, :string)
-    field(:confirmed_at, :utc_datetime)
-    field(:confirmation_sent_at, :utc_datetime)
+    field(:confirmed_at, Timex.Ecto.DateTime)
+    field(:confirmation_sent_at, Timex.Ecto.DateTime)
     # Only if using reconfirmable
     field(:unconfirmed_email, :string)
 
     ## Recoverable
     field(:reset_password_token, :string)
-    field(:reset_password_sent_at, :utc_datetime)
+    field(:reset_password_sent_at, Timex.Ecto.DateTime)
 
     ## Rememberable
-    field(:remember_created_at, :utc_datetime)
+    field(:remember_created_at, Timex.Ecto.DateTime)
 
     ## Trackable
     field(:sign_in_count, :integer)
-    field(:current_sign_in_at, :utc_datetime)
-    field(:last_sign_in_at, :utc_datetime)
+    field(:current_sign_in_at, Timex.Ecto.DateTime)
+    field(:last_sign_in_at, Timex.Ecto.DateTime)
     field(:current_sign_in_ip, :string)
     field(:last_sign_in_ip, :string)
 
@@ -38,7 +40,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
     field(:failed_attempts, :integer)
     # Only if unlock strategy is :email or :both
     field(:unlock_token, :string)
-    field(:locked_at, :utc_datetime)
+    field(:locked_at, Timex.Ecto.DateTime)
 
     ## Admin
     field(:admin, :boolean)
@@ -57,7 +59,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
     |> validate_format(:email, ~r/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$\z/i)
     |> encrypt_password()
     |> put_change(:confirmation_token, generate_token(:confirmation_token))
-    |> put_change(:confirmation_sent_at, DateTime.utc_now())
+    |> put_change(:confirmation_sent_at, Timex.now())
   end
 
   defp encrypt_password(changeset) do
@@ -86,7 +88,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
   def generate_reset_password_token(%User{} = user) do
     user
     |> change(%{
-      reset_password_sent_at: DateTime.utc_now(),
+      reset_password_sent_at: Timex.now(),
       reset_password_token: generate_token(:reset_password_token, 24)
     })
   end

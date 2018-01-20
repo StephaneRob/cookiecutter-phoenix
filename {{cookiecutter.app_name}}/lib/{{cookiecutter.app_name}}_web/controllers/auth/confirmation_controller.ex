@@ -15,7 +15,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ConfirmationController do
 
         conn
         |> put_flash(:info, gettext("Your account has been successfully confirmed."))
-        |> redirect(to: home_path(conn, :index))
+        |> redirect(to: session_path(conn, :new))
     end
   end
 end

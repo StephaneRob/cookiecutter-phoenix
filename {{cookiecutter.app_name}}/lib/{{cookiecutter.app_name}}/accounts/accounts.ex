@@ -55,7 +55,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
 
   def confirm_user(%User{} = user) do
     user
-    |> Ecto.Changeset.change(%{confirmed_at: DateTime.utc_now(), confirmation_token: nil})
+    |> Ecto.Changeset.change(%{confirmed_at: Timex.now(), confirmation_token: nil})
     |> Repo.update()
   end
 
@@ -102,7 +102,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
   def track(conn, %User{} = user) do
     tracks = %{
       sign_in_count: user.sign_in_count + 1,
-      current_sign_in_at: DateTime.utc_now(),
+      current_sign_in_at: Timex.now(),
       last_sign_in_at: user.current_sign_in_at,
       current_sign_in_ip: Enum.join(Tuple.to_list(conn.remote_ip), "."),
       last_sign_in_ip: user.current_sign_in_ip,
@@ -125,7 +125,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
         tracks[:failed_attempts] > Application.get_env(:my_app, :locked_after, 4) ->
           tracks
           |> Map.put(:unlock_token, User.generate_token(:unlock_token, 24))
-          |> Map.put(:locked_at, DateTime.utc_now())
+          |> Map.put(:locked_at, Timex.now())
 
         true ->
           tracks

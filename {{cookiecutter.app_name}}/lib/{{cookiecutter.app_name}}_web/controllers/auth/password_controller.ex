@@ -11,26 +11,20 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
-    case Accounts.get_user_by(:email, email) do
-      nil ->
-        changeset = Ecto.Changeset.change(%User{}, %{})
+    user = Accounts.get_user_by(:email, email)
 
-        conn
-        |> put_flash(:error, gettext("Invalid email"))
-        |> render("new.html", changeset: changeset)
-
-      user ->
-        Accounts.set_reset_password_token(user)
-
-        conn
-        |> put_flash(
-          :info,
-          gettext(
-            "You will receive an email with instructions on how to reset your password in a few minutes."
-          )
-        )
-        |> redirect(to: home_path(conn, :index))
+    if user do
+      Accounts.set_reset_password_token(user)
     end
+
+    conn
+    |> put_flash(
+      :info,
+      gettext(
+        "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.."
+      )
+    )
+    |> redirect(to: session_path(conn, :new))
   end
 
   def edit(conn, %{"id" => reset_password_token}) do

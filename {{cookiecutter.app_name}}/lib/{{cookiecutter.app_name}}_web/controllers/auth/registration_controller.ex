@@ -17,7 +17,12 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.RegistrationController do
         Logger.debug("[CONFIRMATION] - #{confirmation_url(conn, :edit, user.confirmation_token)}")
 
         conn
-        |> put_flash(:info, gettext("Account successfully created."))
+        |> put_flash(
+          :info,
+          gettext(
+            "You have signed up successfully. You will receive an email with instructions for how to confirm your email address in a few minutes."
+          )
+        )
         |> redirect(to: "/")
 
       {:error, changeset} ->

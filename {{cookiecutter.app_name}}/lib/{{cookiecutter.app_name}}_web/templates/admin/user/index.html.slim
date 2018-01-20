@@ -13,7 +13,7 @@
       = for user <- @users do
         tr
           td= user.id
-          td= user.inserted_at
+          td= format_datime(user.inserted_at, :pretty)
           td= user.name
           td= !!user.confirmed_at
           td= !!user.suspended_at

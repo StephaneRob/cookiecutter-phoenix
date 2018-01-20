@@ -37,6 +37,8 @@ defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.3"},
       {:ecto, "~> 2.2.8"},
+      {:timex, "~> 3.1.0"},
+      {:timex_ecto, "~> 3.2.0"},
       {:postgrex, "~> 0.13.3"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_slime, "~> 0.9.0"},

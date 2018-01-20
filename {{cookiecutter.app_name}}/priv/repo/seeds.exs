@@ -4,7 +4,7 @@ users = [
     # azerty
     encrypted_password: "$2b$12$M3r3PZSHcunEFCxxzd75u.OkSj300ZDDKJUl/H24Hpq5aOvlyqHXS",
     email: "admin@example.com",
-    confirmed_at: DateTime.utc_now(),
+    confirmed_at: Timex.now(),
     admin: true
   },
   %{{cookiecutter.app_name_camel_case}}.Accounts.User{
@@ -12,15 +12,15 @@ users = [
     # azerty
     encrypted_password: "$2b$12$M3r3PZSHcunEFCxxzd75u.OkSj300ZDDKJUl/H24Hpq5aOvlyqHXS",
     email: "user@example.com",
-    confirmed_at: DateTime.utc_now()
+    confirmed_at: Timex.now()
   },
   %{{cookiecutter.app_name_camel_case}}.Accounts.User{
     name: "locked_user",
     # azerty
     encrypted_password: "$2b$12$M3r3PZSHcunEFCxxzd75u.OkSj300ZDDKJUl/H24Hpq5aOvlyqHXS",
     email: "locked_user@example.com",
-    confirmed_at: DateTime.utc_now(),
-    locked_at: DateTime.utc_now()
+    confirmed_at: Timex.now(),
+    locked_at: Timex.now()
   }
 ]
 
