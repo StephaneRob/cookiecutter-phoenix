@@ -27,7 +27,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            { loader: 'css-loader', options: { minimize: true } },
+            { loader: 'css-loader', options: { minimize: process.env.NODE_ENV === 'production' } },
             { loader: 'postcss-loader', options: { sourceMap: true } },
             'resolve-url-loader',
             { loader: 'sass-loader', options: { sourceMap: true } },
