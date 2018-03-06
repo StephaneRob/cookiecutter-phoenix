@@ -5,7 +5,7 @@ use Mix.Config
 #
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
-# with brunch.io to recompile .js and .css sources.
+# with webpack to recompile .js and .css sources.
 config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpoint,
   http: [port: {{cookiecutter.dev_port}}],
   debug_errors: true,
@@ -13,9 +13,13 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpo
   check_origin: false,
   watchers: [
     node: [
-      "node_modules/brunch/bin/brunch",
-      "watch",
-      "--stdin",
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      "--color",
+      "--config",
+      "webpack.dev.js",
       cd: Path.expand("../assets", __DIR__)
     ]
   ]
