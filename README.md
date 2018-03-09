@@ -6,7 +6,7 @@ A [cookiecutter](https://github.com/audreyr/cookiecutter) template to bootstrap 
 
 - Python 3.6
 - Elixir 1.6
-- Postgresql >= 9.6
+- Postgresql >= 9.6 OR Mysql >= 5.7
 
 ## Features
 
@@ -40,6 +40,9 @@ author_name [Stéphane ROBINO]:
 email [you@example.com]:
 description [A short description of the project.]:
 version [0.0.1]:
+Select database:
+1 - postgresql
+2 - mysql
 dev_database_name [my_app_dev]:
 dev_database_username []:
 dev_database_password []:

@@ -2,7 +2,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.ReleaseTasks do
   @start_apps [
     :crypto,
     :ssl,
-    :postgrex,
+    :{% if cookiecutter.database == "postgreql" %}postgrex{% elif cookiecutter.database == "mysql" %}mariaex{% endif %},
     :ecto
   ]
 

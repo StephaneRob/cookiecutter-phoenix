@@ -33,13 +33,13 @@ defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.0"},
+      {:phoenix, "~> 1.3.1"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.3"},
       {:ecto, "~> 2.2.8"},
       {:timex, "~> 3.1.0"},
       {:timex_ecto, "~> 3.2.0"},
-      {:postgrex, "~> 0.13.3"},
+      {% raw %}{{% endraw %}{% if cookiecutter.database == "postgreql" %}:postgrex, "~> 0.13.3"{% elif cookiecutter.database == "mysql" %}:mariaex, ">= 0.0.0"{% endif %}{% raw %}}{% endraw %},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_slime, "~> 0.9.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
