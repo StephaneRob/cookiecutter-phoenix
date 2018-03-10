@@ -18,7 +18,7 @@
             = user.id
             br
             small.text-muted= user.email
-          td= format_datetime(user.created_at, :pretty)
+          td= format_datetime(user.inserted_at, :pretty)
           td= user.name
           td.text-center
             = if user.confirmed_at do
