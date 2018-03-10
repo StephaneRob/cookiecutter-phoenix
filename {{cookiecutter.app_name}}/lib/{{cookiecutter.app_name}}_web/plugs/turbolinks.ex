@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.Turbolinks do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.Turbolinks do
   import Plug.Conn
 
   @session_key "_turbolinks_location"

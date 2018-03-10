@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.RequireAdmin do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireAdmin do
   import Plug.Conn, only: [halt: 1]
 
   def init(opts), do: opts
@@ -10,7 +10,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.RequireAdmin do
       conn
     else
       conn
-      |> Phoenix.Controller.render({{cookiecutter.app_name_camel_case}}Web.ErrorView, "404.html")
+      |> Phoenix.Controller.render({{cookiecutter.app_name.split('_')|map('title')|join}}Web.ErrorView, "404.html")
       |> halt()
     end
   end

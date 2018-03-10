@@ -1,12 +1,12 @@
-defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts do
   @moduledoc """
   The Accounts context.
   """
 
   import Ecto.Query, warn: false
-  alias {{cookiecutter.app_name_camel_case}}.Repo
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Repo
 
-  alias {{cookiecutter.app_name_camel_case}}.Accounts.User
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User
 
   # ----------------------------------
   # Fetch user(s)
@@ -95,7 +95,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Accounts do
 
   def sign_in(conn, %User{} = user) do
     conn
-    |> {{cookiecutter.app_name_camel_case}}.Guardian.Plug.sign_in(user)
+    |> {{cookiecutter.app_name.split('_')|map('title')|join}}.Guardian.Plug.sign_in(user)
     |> track(user)
   end
 

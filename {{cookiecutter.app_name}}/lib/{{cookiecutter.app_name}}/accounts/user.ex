@@ -1,11 +1,11 @@
-defmodule {{cookiecutter.app_name_camel_case}}.Accounts.User do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User do
   use Ecto.Schema
   use Timex.Ecto.Timestamps
 
   import Ecto.Changeset
-  alias {{cookiecutter.app_name_camel_case}}.{Repo, Accounts}
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.{Repo, Accounts}
 
-  alias {{cookiecutter.app_name_camel_case}}.Accounts.User
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User
 
   schema "users" do
     field(:name, :string)

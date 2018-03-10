@@ -1,8 +1,8 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.UserSocket do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", {{cookiecutter.app_name_camel_case}}Web.RoomChannel
+  # channel "room:*", {{cookiecutter.app_name.split('_')|map('title')|join}}Web.RoomChannel
 
   ## Transports
   transport(:websocket, Phoenix.Transports.WebSocket)
@@ -30,7 +30,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     {{cookiecutter.app_name_camel_case}}Web.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil

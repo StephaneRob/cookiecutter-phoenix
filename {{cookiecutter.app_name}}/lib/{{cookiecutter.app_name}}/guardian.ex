@@ -1,6 +1,6 @@
-defmodule {{cookiecutter.app_name_camel_case}}.Guardian do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Guardian do
   use Guardian, otp_app: :{{cookiecutter.app_name}}
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
   def subject_for_token(resource, claims) do
     # You can use any value for the subject of your token but

@@ -1,11 +1,11 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Gettext do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import {{cookiecutter.app_name_camel_case}}Web.Gettext
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"

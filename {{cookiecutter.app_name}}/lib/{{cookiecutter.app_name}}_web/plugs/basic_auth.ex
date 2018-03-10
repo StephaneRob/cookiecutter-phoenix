@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.BasicAuth do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.BasicAuth do
   import Plug.Conn
   @realm "Basic real=\"Protect\""
 

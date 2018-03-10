@@ -1,5 +1,5 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.PageControllerTest do
-  use {{cookiecutter.app_name_camel_case}}Web.ConnCase
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.PageControllerTest do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

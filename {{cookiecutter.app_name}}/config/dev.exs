@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpoint,
+config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint,
   http: [port: {{cookiecutter.dev_port}}],
   debug_errors: true,
   code_reloader: true,
@@ -41,7 +41,7 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpo
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpoint,
+config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
@@ -59,7 +59,7 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}.Repo,
+config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}.Repo,
   adapter: {% if cookiecutter.database == "postgreql" %}Ecto.Adapters.Postgres{% elif cookiecutter.database == "mysql" %}Ecto.Adapters.MySQL{% endif %},{% if cookiecutter.dev_database_username != "" %}
   username: "{{cookiecutter.dev_database_username}}",{% endif %}{% if cookiecutter.dev_database_password != "" %}
   password: "{{cookiecutter.dev_database_password}}",{% endif %}

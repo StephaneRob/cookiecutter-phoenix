@@ -1,9 +1,9 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.ActiveForAuthentication do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.ActiveForAuthentication do
   @moduledoc """
     Sign out user automatically if no longer active for authentication
     ex : suspended
   """
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
   @doc false
   def init(opts), do: opts
@@ -18,9 +18,9 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Plug.ActiveForAuthentication d
 
       {reason, false} ->
         conn
-        |> {{cookiecutter.app_name_camel_case}}.Guardian.Plug.sign_out()
-        |> Phoenix.Controller.put_flash(:error, {{cookiecutter.app_name_camel_case}}Web.Auth.humanize_reason(reason))
-        |> Phoenix.Controller.redirect(to: {{cookiecutter.app_name_camel_case}}Web.Router.Helpers.home_path(conn, :index))
+        |> {{cookiecutter.app_name.split('_')|map('title')|join}}.Guardian.Plug.sign_out()
+        |> Phoenix.Controller.put_flash(:error, {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Auth.humanize_reason(reason))
+        |> Phoenix.Controller.redirect(to: {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router.Helpers.home_path(conn, :index))
         |> Plug.Conn.halt()
     end
   end

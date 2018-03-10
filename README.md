@@ -15,6 +15,7 @@ A [cookiecutter](https://github.com/audreyr/cookiecutter) template to bootstrap 
 - Authentication : Authenticable, registerable, trackable, confirmable, lockable, recoverable (guardian, comeonin, bcrypt)
 - Twitter Bootstrap 4
 - Slime template
+- Font awesome 5
 
 ## Usage
 
@@ -33,8 +34,7 @@ cookiecutter https://github.com/StephaneRob/cookiecutter-phoenix
 You'll be prompted for some values to configure your Phoenix app
 
 ```
-app_name [myapp]: my_app
-app_name_camel_case [MyApp]:
+app_name (lowercase) [my_app]: my_app
 domain_name [example.com]:
 author_name [Stéphane ROBINO]:
 email [you@example.com]:

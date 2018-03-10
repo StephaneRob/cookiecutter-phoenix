@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.ConnCase do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      import {{cookiecutter.app_name_camel_case}}Web.Router.Helpers
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint {{cookiecutter.app_name_camel_case}}Web.Endpoint
+      @endpoint {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint
     end
   end
 
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout({{cookiecutter.app_name_camel_case}}.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout({{cookiecutter.app_name.split('_')|map('title')|join}}.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode({{cookiecutter.app_name_camel_case}}.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode({{cookiecutter.app_name.split('_')|map('title')|join}}.Repo, {:shared, self()})
     end
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end

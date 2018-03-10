@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.ErrorHelpers do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -38,9 +38,9 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext({{cookiecutter.app_name_camel_case}}Web.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext({{cookiecutter.app_name_camel_case}}Web.Gettext, "errors", msg, opts)
+      Gettext.dgettext({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext, "errors", msg, opts)
     end
   end
 end

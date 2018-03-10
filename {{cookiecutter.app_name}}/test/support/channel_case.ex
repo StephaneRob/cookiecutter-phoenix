@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.ChannelCase do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint {{cookiecutter.app_name_camel_case}}Web.Endpoint
+      @endpoint {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint
     end
   end
 
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout({{cookiecutter.app_name_camel_case}}.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout({{cookiecutter.app_name.split('_')|map('title')|join}}.Repo)
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode({{cookiecutter.app_name_camel_case}}.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode({{cookiecutter.app_name.split('_')|map('title')|join}}.Repo, {:shared, self()})
     end
     :ok
   end

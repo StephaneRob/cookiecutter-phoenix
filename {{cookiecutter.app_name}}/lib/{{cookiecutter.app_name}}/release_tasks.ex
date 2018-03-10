@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}.ReleaseTasks do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.ReleaseTasks do
   @start_apps [
     :crypto,
     :ssl,

@@ -1,4 +1,4 @@
-# {{cookiecutter.app_name_camel_case}}
+# {{cookiecutter.app_name.split('_')|map('title')|join}}
 
 To start your Phoenix server:
 

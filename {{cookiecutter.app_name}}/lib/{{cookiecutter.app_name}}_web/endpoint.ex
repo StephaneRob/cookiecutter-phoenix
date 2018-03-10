@@ -1,7 +1,7 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Endpoint do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :{{cookiecutter.app_name}}
 
-  socket("/socket", {{cookiecutter.app_name_camel_case}}Web.UserSocket)
+  socket("/socket", {{cookiecutter.app_name.split('_')|map('title')|join}}Web.UserSocket)
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -46,7 +46,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Endpoint do
     signing_salt: "7LNN9K6Y"
   )
 
-  plug({{cookiecutter.app_name_camel_case}}Web.Router)
+  plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router)
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

@@ -1,5 +1,5 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.ErrorView do
-  use {{cookiecutter.app_name_camel_case}}Web, :view
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ErrorView do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

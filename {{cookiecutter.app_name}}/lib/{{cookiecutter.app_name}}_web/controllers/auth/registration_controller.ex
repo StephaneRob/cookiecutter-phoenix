@@ -1,7 +1,7 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.RegistrationController do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.RegistrationController do
   require Logger
-  use {{cookiecutter.app_name_camel_case}}Web, :controller
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
   plug(RequireGuest)
   plug(:scrub_params, "user" when action in [:create])

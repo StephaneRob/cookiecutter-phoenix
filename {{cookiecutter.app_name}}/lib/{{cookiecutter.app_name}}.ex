@@ -1,6 +1,6 @@
-defmodule {{cookiecutter.app_name_camel_case}} do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}} do
   @moduledoc """
-  {{cookiecutter.app_name_camel_case}} keeps the contexts that define your domain
+  {{cookiecutter.app_name.split('_')|map('title')|join}} keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

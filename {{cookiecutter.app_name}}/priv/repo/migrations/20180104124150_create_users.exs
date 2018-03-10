@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}.Repo.Migrations.CreateUsers do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do

@@ -1,5 +1,5 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.Router do
-  use {{cookiecutter.app_name_camel_case}}Web, :router
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :router
 
   pipeline :browser do
     plug(:accepts, ["html"])
@@ -7,22 +7,22 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Router do
     plug(:fetch_flash)
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
-    plug({{cookiecutter.app_name_camel_case}}Web.Plug.Turbolinks)
+    plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.Turbolinks)
   end
 
   pipeline :browser_auth do
-    plug({{cookiecutter.app_name_camel_case}}Web.Plug.BrowserAuth)
+    plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.BrowserAuth)
   end
 
   pipeline :admin do
-    plug({{cookiecutter.app_name_camel_case}}Web.Plug.RequireAdmin)
+    plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireAdmin)
   end
 
   pipeline :api do
     plug(:accepts, ["json"])
   end
 
-  scope "/", {{cookiecutter.app_name_camel_case}}Web do
+  scope "/", {{cookiecutter.app_name.split('_')|map('title')|join}}Web do
     pipe_through([:browser, :browser_auth])
 
     scope "/admin", Admin, as: :admin do
@@ -49,7 +49,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", {{cookiecutter.app_name_camel_case}}Web do
+  # scope "/api", {{cookiecutter.app_name.split('_')|map('title')|join}}Web do
   #   pipe_through :api
   # end
 end

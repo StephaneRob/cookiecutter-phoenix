@@ -7,15 +7,15 @@ use Mix.Config
 
 # General application configuration
 config :{{cookiecutter.app_name}},
-  ecto_repos: [{{cookiecutter.app_name_camel_case}}.Repo],
+  ecto_repos: [{{cookiecutter.app_name.split('_')|map('title')|join}}.Repo],
   locked_after: 4
 
 # Configures the endpoint
-config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}Web.Endpoint,
+config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "svqSRdYYcf3Nm8BI3XwQJJvNsydLw4M4trm8T+vqvUzXGtWVy9+usJENd7FMiJ9t",
-  render_errors: [view: {{cookiecutter.app_name_camel_case}}Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: {{cookiecutter.app_name_camel_case}}.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: {{cookiecutter.app_name.split('_')|map('title')|join}}.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -26,14 +26,14 @@ config :phoenix, :template_engines,
   slim: PhoenixSlime.Engine,
   slime: PhoenixSlime.Engine
 
-config :{{cookiecutter.app_name}}, {{cookiecutter.app_name_camel_case}}.Guardian,
+config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}.Guardian,
   issuer: "{{cookiecutter.app_name}}",
   ttl: {2, :days},
   verify_issuer: true,
   secret_key: "Cmw+/MruMSIOr5B8d7Nlyj+IeS9OdUYWr/J+Eg/NK0RBMKvjhM+UbKgyE1h9lTki"
 
 config :scrivener_html,
-  routes_helper: {{cookiecutter.app_name_camel_case}}.Router.Helpers,
+  routes_helper: {{cookiecutter.app_name.split('_')|map('title')|join}}.Router.Helpers,
   view_style: :bootstrap_v4
 
 # Import environment specific config. This must remain at the bottom

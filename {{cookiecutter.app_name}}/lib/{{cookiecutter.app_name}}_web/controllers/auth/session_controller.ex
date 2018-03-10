@@ -1,6 +1,6 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
-  use {{cookiecutter.app_name_camel_case}}Web, :controller
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.SessionController do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
   plug(RequireGuest when action in [:new, :create])
 
@@ -20,7 +20,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
 
           {reason, false} ->
             conn
-            |> put_flash(:error, {{cookiecutter.app_name_camel_case}}Web.Auth.humanize_reason(reason))
+            |> put_flash(:error, {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Auth.humanize_reason(reason))
             |> redirect(to: session_path(conn, :new))
         end
 
@@ -50,7 +50,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
 
   def delete(conn, _) do
     conn
-    |> {{cookiecutter.app_name_camel_case}}.Guardian.Plug.sign_out()
+    |> {{cookiecutter.app_name.split('_')|map('title')|join}}.Guardian.Plug.sign_out()
     |> put_flash(:info, "Signed out successfully.")
     |> redirect(to: "/")
   end

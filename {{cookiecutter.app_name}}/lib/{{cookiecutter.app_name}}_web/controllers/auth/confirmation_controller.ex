@@ -1,6 +1,6 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.ConfirmationController do
-  use {{cookiecutter.app_name_camel_case}}Web, :controller
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ConfirmationController do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
   def edit(conn, %{"id" => confirmation_token}) do
     case Accounts.get_user_by(:confirmation_token, confirmation_token) do

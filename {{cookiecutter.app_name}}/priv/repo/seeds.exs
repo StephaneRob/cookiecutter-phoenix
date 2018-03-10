@@ -1,5 +1,5 @@
 users = [
-  %{{cookiecutter.app_name_camel_case}}.Accounts.User{
+  %{{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User{
     name: "admin",
     # azerty
     encrypted_password: "$2b$12$M3r3PZSHcunEFCxxzd75u.OkSj300ZDDKJUl/H24Hpq5aOvlyqHXS",
@@ -7,14 +7,14 @@ users = [
     confirmed_at: Timex.now(),
     admin: true
   },
-  %{{cookiecutter.app_name_camel_case}}.Accounts.User{
+  %{{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User{
     name: "user",
     # azerty
     encrypted_password: "$2b$12$M3r3PZSHcunEFCxxzd75u.OkSj300ZDDKJUl/H24Hpq5aOvlyqHXS",
     email: "user@example.com",
     confirmed_at: Timex.now()
   },
-  %{{cookiecutter.app_name_camel_case}}.Accounts.User{
+  %{{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User{
     name: "locked_user",
     # azerty
     encrypted_password: "$2b$12$M3r3PZSHcunEFCxxzd75u.OkSj300ZDDKJUl/H24Hpq5aOvlyqHXS",
@@ -25,5 +25,5 @@ users = [
 ]
 
 for user <- users do
-  {{cookiecutter.app_name_camel_case}}.Repo.insert!(user)
+  {{cookiecutter.app_name.split('_')|map('title')|join}}.Repo.insert!(user)
 end

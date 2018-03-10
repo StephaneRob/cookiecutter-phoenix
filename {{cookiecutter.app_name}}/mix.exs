@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Mixfile do
   use Mix.Project
 
   def project do
@@ -19,7 +19,7 @@ defmodule {{cookiecutter.app_name_camel_case}}.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {% raw %}{{% endraw %}{{cookiecutter.app_name_camel_case}}.Application, []{% raw %}}{% endraw %},
+      mod: {% raw %}{{% endraw %}{{cookiecutter.app_name.split('_')|map('title')|join}}.Application, []{% raw %}}{% endraw %},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

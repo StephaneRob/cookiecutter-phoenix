@@ -1,4 +1,4 @@
-defmodule {{cookiecutter.app_name_camel_case}}.Repo do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Repo do
   use Ecto.Repo, otp_app: :{{cookiecutter.app_name}}
   use Scrivener, page_size: 30
 

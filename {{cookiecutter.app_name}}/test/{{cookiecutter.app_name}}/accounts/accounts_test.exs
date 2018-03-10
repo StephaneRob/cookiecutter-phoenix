@@ -1,10 +1,10 @@
-defmodule {{cookiecutter.app_name_camel_case}}.AccountsTest do
-  use {{cookiecutter.app_name_camel_case}}.DataCase
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.AccountsTest do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}.DataCase
 
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
   describe "users" do
-    alias {{cookiecutter.app_name_camel_case}}.Accounts.User
+    alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User
 
     @valid_attrs %{email: "some email"}
     @update_attrs %{email: "some updated email"}

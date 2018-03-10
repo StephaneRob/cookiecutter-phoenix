@@ -1,12 +1,12 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web do
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use {{cookiecutter.app_name_camel_case}}Web, :controller
-      use {{cookiecutter.app_name_camel_case}}Web, :view
+      use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
+      use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,11 +19,11 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: {{cookiecutter.app_name_camel_case}}Web
+      use Phoenix.Controller, namespace: {{cookiecutter.app_name.split('_')|map('title')|join}}Web
       import Plug.Conn
-      import {{cookiecutter.app_name_camel_case}}Web.Router.Helpers
-      import {{cookiecutter.app_name_camel_case}}Web.Gettext
-      import {{cookiecutter.app_name_camel_case}}Web.AppHelpers
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router.Helpers
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.AppHelpers
     end
   end
 
@@ -31,7 +31,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
     quote do
       use Phoenix.View,
         root: "lib/{{cookiecutter.app_name}}_web/templates",
-        namespace: {{cookiecutter.app_name_camel_case}}Web
+        namespace: {{cookiecutter.app_name.split('_')|map('title')|join}}Web
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -39,10 +39,10 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
       import Scrivener.HTML
-      import {{cookiecutter.app_name_camel_case}}Web.Router.Helpers
-      import {{cookiecutter.app_name_camel_case}}Web.ErrorHelpers
-      import {{cookiecutter.app_name_camel_case}}Web.AppHelpers
-      import {{cookiecutter.app_name_camel_case}}Web.Gettext
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router.Helpers
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.ErrorHelpers
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.AppHelpers
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext
     end
   end
 
@@ -57,7 +57,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
   def channel do
     quote do
       use Phoenix.Channel
-      import {{cookiecutter.app_name_camel_case}}Web.Gettext
+      import {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Gettext
     end
   end
 

@@ -1,7 +1,7 @@
-defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
-  use {{cookiecutter.app_name_camel_case}}Web, :controller
-  alias {{cookiecutter.app_name_camel_case}}.Accounts
-  alias {{cookiecutter.app_name_camel_case}}.Accounts.User
+defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.PasswordController do
+  use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User
 
 
   plug(RequireGuest)
