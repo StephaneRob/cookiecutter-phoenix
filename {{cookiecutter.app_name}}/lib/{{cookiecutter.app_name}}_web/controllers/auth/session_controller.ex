@@ -2,7 +2,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.SessionController do
   use {{cookiecutter.app_name_camel_case}}Web, :controller
   alias {{cookiecutter.app_name_camel_case}}.Accounts
 
-  plug(:redirect_logged_in when action in [:new, :create])
+  plug(RequireGuest when action in [:new, :create])
 
   def new(conn, _) do
     render(conn, "new.html")

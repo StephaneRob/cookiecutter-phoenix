@@ -24,7 +24,6 @@ defmodule {{cookiecutter.app_name_camel_case}}Web do
       import {{cookiecutter.app_name_camel_case}}Web.Router.Helpers
       import {{cookiecutter.app_name_camel_case}}Web.Gettext
       import {{cookiecutter.app_name_camel_case}}Web.AppHelpers
-      import {{cookiecutter.app_name_camel_case}}Web.Plug.RedirectLoggedInUser, only: [redirect_logged_in: 2]
     end
   end
 

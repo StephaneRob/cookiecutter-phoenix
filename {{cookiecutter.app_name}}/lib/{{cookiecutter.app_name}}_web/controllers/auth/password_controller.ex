@@ -3,7 +3,8 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.PasswordController do
   alias {{cookiecutter.app_name_camel_case}}.Accounts
   alias {{cookiecutter.app_name_camel_case}}.Accounts.User
 
-  plug(:redirect_logged_in)
+
+  plug(RequireGuest)
 
   def new(conn, _params) do
     changeset = Ecto.Changeset.change(%User{}, %{})

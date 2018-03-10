@@ -3,7 +3,7 @@ defmodule {{cookiecutter.app_name_camel_case}}Web.RegistrationController do
   use {{cookiecutter.app_name_camel_case}}Web, :controller
   alias {{cookiecutter.app_name_camel_case}}.Accounts
 
-  plug(:redirect_logged_in)
+  plug(RequireGuest)
   plug(:scrub_params, "user" when action in [:create])
 
   def new(conn, _params) do
