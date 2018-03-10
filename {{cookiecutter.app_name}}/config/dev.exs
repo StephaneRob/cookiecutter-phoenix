@@ -60,7 +60,7 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}.Repo,
-  adapter: {% if cookiecutter.database == "postgreql" %}Ecto.Adapters.Postgres{% elif cookiecutter.database == "mysql" %}Ecto.Adapters.MySQL{% endif %},{% if cookiecutter.dev_database_username != "" %}
+  adapter: {% if cookiecutter.database == "postgresql" %}Ecto.Adapters.Postgres{% elif cookiecutter.database == "mysql" %}Ecto.Adapters.MySQL{% endif %},{% if cookiecutter.dev_database_username != "" %}
   username: "{{cookiecutter.dev_database_username}}",{% endif %}{% if cookiecutter.dev_database_password != "" %}
   password: "{{cookiecutter.dev_database_password}}",{% endif %}
   database: "{{cookiecutter.dev_database_name}}",
