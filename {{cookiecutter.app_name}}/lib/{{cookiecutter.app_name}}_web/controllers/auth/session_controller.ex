@@ -2,7 +2,7 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.SessionContr
   use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
   alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
-  plug(RequireGuest when action in [:new, :create])
+  plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireGuest when action in [:new, :create])
 
   def new(conn, _) do
     render(conn, "new.html")

@@ -4,7 +4,7 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.PasswordCont
   alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User
 
 
-  plug(RequireGuest)
+  plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireGuest)
 
   def new(conn, _params) do
     changeset = Ecto.Changeset.change(%User{}, %{})

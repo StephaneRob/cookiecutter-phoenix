@@ -3,7 +3,7 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Registration
   use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
   alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
 
-  plug(RequireGuest)
+  plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireGuest)
   plug(:scrub_params, "user" when action in [:create])
 
   def new(conn, _params) do
