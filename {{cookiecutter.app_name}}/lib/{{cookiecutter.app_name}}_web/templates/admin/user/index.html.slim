@@ -1,22 +1,39 @@
-.container
-  h1 Users
+.container.my-3
+  h1.mb-2
+    i.fas.fa-users>
+    | Users
   table.table
     thead
       tr
         th Id
         th Created at
         th Name
-        th Confirmed
-        th Suspended
-        th Locked
+        th.text-center Confirmed
+        th.text-center Suspended
+        th.text-center Locked
     tbody
       = for user <- @users do
         tr
-          td= user.id
-          td= format_datime(user.inserted_at, :pretty)
+          td
+            = user.id
+            br
+            small.text-muted= user.email
+          td= format_datetime(user.created_at, :pretty)
           td= user.name
-          td= !!user.confirmed_at
-          td= !!user.suspended_at
-          td= !!user.locked_at
+          td.text-center
+            = if user.confirmed_at do
+              i.fas.fa-check-square.text-success
+            - else
+              i.far.fa-square.text-danger
+          td.text-center
+            = if user.suspended_at do
+              i.fas.fa-check-square.text-success
+            - else
+              i.far.fa-square.text-danger
+          td.text-center
+            = if user.locked_at do
+              i.fas.fa-check-square.text-success
+            - else
+              i.far.fa-square.text-danger
 
   .d-flex.justify-content-center= pagination_links @users
