@@ -60,18 +60,3 @@ Steps after configuration :
 5. Install assets dependencies
 
 You're ready to start server `cd myapp && mix phx.server`
-
-## Todo
-
-### Cookiecutter
-- [X] Remove `app_name_camel_case` shouldn't be configurable
-- [ ] Configuration options
-  - [ ] https
-- [ ] Generate secrets on post_gen_project hook
-
-### APP
-- [ ] Add tests, credo
-- [ ] Add mailer dependency (bamboo, mailman, swoosh)
-  - [ ] Add authentication email
-- [ ] Add ueberauth ?
-- [ ] Add deployment tool : [distillery](https://github.com/bitwalker/distillery)/[bootleg](https://github.com/labzero/bootleg)
