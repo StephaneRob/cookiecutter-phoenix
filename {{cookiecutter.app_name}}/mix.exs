@@ -39,7 +39,7 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Mixfile do
       {:ecto, "~> 2.2.8"},
       {:timex, "~> 3.1.0"},
       {:timex_ecto, "~> 3.2.0"},
-      {% raw %}{{% endraw %}{% if cookiecutter.database == "postgreql" %}:postgrex, "~> 0.13.3"{% elif cookiecutter.database == "mysql" %}:mariaex, ">= 0.0.0"{% endif %}{% raw %}}{% endraw %},
+      {% raw %}{{% endraw %}{% if cookiecutter.database == "postgresql" %}:postgrex, "~> 0.13.3"{% elif cookiecutter.database == "mysql" %}:mariaex, ">= 0.0.0"{% endif %}{% raw %}}{% endraw %},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_slime, "~> 0.9.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},

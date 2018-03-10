@@ -2,7 +2,7 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.ReleaseTasks do
   @start_apps [
     :crypto,
     :ssl,
-    :{% if cookiecutter.database == "postgreql" %}postgrex{% elif cookiecutter.database == "mysql" %}mariaex{% endif %},
+    :{% if cookiecutter.database == "postgresql" %}postgrex{% elif cookiecutter.database == "mysql" %}mariaex{% endif %},
     :ecto
   ]
 
