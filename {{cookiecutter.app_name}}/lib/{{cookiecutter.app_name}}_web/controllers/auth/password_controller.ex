@@ -1,8 +1,8 @@
 defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.PasswordController do
   use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
-  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.{Accounts, Mailer}
   alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts.User
-
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}Web.AuthMailer
 
   plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireGuest)
 
@@ -16,6 +16,7 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.PasswordCont
 
     if user do
       Accounts.set_reset_password_token(user)
+      AuthMailer.reset_password_instructions(user.id) |> Mailer.deliver_later
     end
 
     conn

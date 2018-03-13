@@ -1,7 +1,8 @@
 defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.RegistrationController do
   require Logger
   use {{cookiecutter.app_name.split('_')|map('title')|join}}Web, :controller
-  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.Accounts
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}.{Accounts, Mailer}
+  alias {{cookiecutter.app_name.split('_')|map('title')|join}}Web.AuthMailer
 
   plug({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Plug.RequireGuest)
   plug(:scrub_params, "user" when action in [:create])
@@ -14,7 +15,8 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Registration
   def create(conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
-        Logger.debug("[CONFIRMATION] - #{confirmation_url(conn, :edit, user.confirmation_token)}")
+
+        AuthMailer.confirmation_instructions(user.id) |> Mailer.deliver_later
 
         conn
         |> put_flash(

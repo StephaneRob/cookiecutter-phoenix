@@ -1,0 +1,5 @@
+Welcome <%= @user.email %>!
+
+You can confirm your account email through the link below:
+
+<%= confirmation_url({{cookiecutter.app_name.split('_')|map('title')|join}}Web.Endpoint, :edit, @user.confirmation_token) %>

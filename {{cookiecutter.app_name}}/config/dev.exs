@@ -66,3 +66,9 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title
   database: "{{cookiecutter.dev_database_name}}",
   hostname: "localhost",
   pool_size: 10
+
+config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "127.0.0.1",
+  hostname: "localhost"
+  port: 1025

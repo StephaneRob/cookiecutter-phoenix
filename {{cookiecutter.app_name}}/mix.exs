@@ -52,7 +52,9 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}.Mixfile do
       {:scrivener_html, "~> 1.7.1"},
       {:distillery, "~> 1.5"},
       {:bootleg, "~> 0.6"},
-      {:bootleg_phoenix, "~> 0.2"}
+      {:bootleg_phoenix, "~> 0.2"},
+      {:bamboo, "~> 0.8"},
+      {:bamboo_smtp, "~> 1.4.0"}
     ]
   end
 
