@@ -70,5 +70,5 @@ config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title
 config :{{cookiecutter.app_name}}, {{cookiecutter.app_name.split('_')|map('title')|join}}.Mailer,
   adapter: Bamboo.SMTPAdapter,
   server: "127.0.0.1",
-  hostname: "localhost"
+  hostname: "localhost",
   port: 1025
