@@ -1,0 +1,54 @@
+<div class="p-4 max-w-xl mx-auto mt-4">
+  <h1 class="text-center text-teal-dark pb-6">Users</h1>
+
+  <table style="border-collapse:collapse" class="text-grey-darker w-full">
+    <thead>
+      <tr>
+        <th class="py-4 px-4 bg-grey-lighter font-sans text-left text-sm text-grey border-b border-grey-light">Id</th>
+        <th class="py-4 px-6 bg-grey-lighter font-sans text-left text-sm text-grey border-b border-grey-light">Created at</th>
+        <th class="py-4 px-6 bg-grey-lighter font-sans text-left text-sm text-grey border-b border-grey-light">Name</th>
+        <th class="py-4 px-6 bg-grey-lighter font-sans text-left text-sm text-grey border-b border-grey-light">Confirmed</th>
+        <th class="py-4 px-6 bg-grey-lighter font-sans text-left text-sm text-grey border-b border-grey-light">Suspended</th>
+        <th class="py-4 px-6 bg-grey-lighter font-sans text-left text-sm text-grey border-b border-grey-light">Locked</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for user <- @users do %>
+        <tr>
+          <td class="py-4 px-4">
+            <%= user.id %>
+            <br>
+            <small class="text-muted"><%= user.email %></small>
+          </td>
+          <td class="py-4 px-4"><%= format_datetime(user.inserted_at, :pretty) %></td>
+          <td class="py-4 px-4"><%= user.name %></td>
+          <td class="py-4 px-4 text-center">
+            <%= if user.confirmed_at do %>
+              <i class="fas fa-check-square text-teal"></i>
+            <% else %>
+              <i class="far fa-square"></i>
+            <% end %>
+          </td>
+          <td class="py-4 px-4 text-center">
+            <%= if user.suspended_at do %>
+              <i class="fas fa-check-square text-teal"></i>
+            <% else %>
+              <i class="far fa-square"></i>
+            <% end %>
+          </td>
+          <td class="py-4 px-4 text-center">
+            <%= if user.locked_at do %>
+              <i class="fas fa-check-square text-teal"></i>
+            <% else %>
+              <i class="far fa-square"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <%= pagination_links @users %>
+  </div>
+</div>

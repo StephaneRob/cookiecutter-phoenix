@@ -11,6 +11,10 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.PasswordCont
     render(conn, "new.html", changeset: changeset)
   end
 
+  def show(conn, %{"id" => reset_password_token}) do
+    redirect(conn, to: password_path(conn, :edit, reset_password_token))
+  end
+
   def create(conn, %{"user" => %{"email" => email}}) do
     user = Accounts.get_user_by(:email, email)
 

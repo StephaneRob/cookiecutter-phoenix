@@ -2,13 +2,12 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "webpack --mode production",
+    "deploy": "webpack --mode production --config webpack.prod.js",
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
     "autoprefixer": "^8.1.0",
-    "bootstrap": "^4.0.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "precss": "^3.1.2",
@@ -20,13 +19,16 @@
     "babel-preset-env": "^1.6.1",
     "copy-webpack-plugin": "^4.5.0",
     "css-loader": "^0.28.10",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
+    "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.7.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
     "postcss-loader": "^2.1.1",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.2",
+    "tailwindcss": "^0.5.1",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.0.0",
     "webpack-cli": "^2.0.10",
     "webpack-merge": "^4.1.2"

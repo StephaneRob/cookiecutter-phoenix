@@ -1,0 +1,8 @@
+<div class="p-4 max-w-lg mx-auto mt-4 text-center">
+  <h1 class="text-teal-dark mb-2">Welcome on {{cookiecutter.app_name.split('_')|map('title')|join}}</h1>
+  <p class="text-grey-dark text-lg mb-8">You can start developing your Elixir/Phoenix app.</p>
+
+  <%= unless user_signed_in?(@conn) do %>
+    <p class="italic text-grey-dark">You can sign in with the user admin (password: azerty) or register a new user</p>
+  <% end %>
+</div>

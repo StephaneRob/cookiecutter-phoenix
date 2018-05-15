@@ -1,4 +1,6 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-module.exports = merge(common, {});
+module.exports = (env, options) => {
+  return merge(common(env, options), {});
+};

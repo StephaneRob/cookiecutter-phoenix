@@ -39,7 +39,8 @@ defmodule {{cookiecutter.app_name.split('_')|map('title')|join}}Web.Router do
     resources("/confirmations", ConfirmationController, only: [:edit])
 
     # Password
-    resources("/passwords", PasswordController, only: [:new, :create, :edit, :update])
+    resources("/passwords", PasswordController, only: [:new, :create, :edit, :update, :show])
+
 
     # Registration
     get("/sign_up", RegistrationController, :new)

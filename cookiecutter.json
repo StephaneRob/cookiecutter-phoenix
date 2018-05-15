@@ -13,5 +13,5 @@
   "test_database_name": "{{cookiecutter.app_name}}_test",
   "test_database_username": "",
   "test_database_password": "",
-  "database_setup": ["no", "setup", "migrate"]
+  "database_setup": ["setup", "migrate", "none"]
 }
