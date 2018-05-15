@@ -13,8 +13,7 @@ A [cookiecutter](https://github.com/audreyr/cookiecutter) template to bootstrap 
 - Elixir 1.6
 - Phoenix 1.3
 - Authentication : Authenticable, registerable, trackable, confirmable, lockable, recoverable (guardian, comeonin, bcrypt)
-- Twitter Bootstrap 4
-- Slime template
+- Tailwindcss
 - Font awesome 5
 
 ## Usage
@@ -43,12 +42,18 @@ version [0.0.1]:
 Select database:
 1 - postgresql
 2 - mysql
+Choose from 1, 2 [1]:
 dev_database_name [my_app_dev]:
 dev_database_username []:
 dev_database_password []:
 test_database_name [my_app_test]:
 test_database_username []:
 test_database_password []:
+Select database_setup:
+1 - setup
+2 - migrate
+3 - none
+Choose from 1, 2, 3 [1]:
 ```
 
 Steps after configuration :
@@ -59,4 +64,4 @@ Steps after configuration :
 4. Create database and migrate
 5. Install assets dependencies
 
-You're ready to start server `cd myapp && mix phx.server`
+You're ready to start server `cd myapp && iex -S mix phx.server`
